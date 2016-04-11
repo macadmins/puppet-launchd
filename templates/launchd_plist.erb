@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string><%= @name %></string>
+    <% if @disabled == true %>
+    <key>Disabled</key>
+    <true />
+    <% end -%>
+    <% if @disabled == false %>
+    <key>Disabled</key>
+    <false/><% end -%>
+    <% if @program %>
+    <key>Program</key>
+    <string><%= @program %></string>
+    <% end -%>
+    <% if @program_arguments %>
+    <key>ProgramArguments</key>
+    <array>
+        <% @program_arguments.each do |argument| -%>
+        <string><%= argument -%></string>
+        <% end -%>
+    </array>
+    <% end -%>
+    <% if @environment_variables %>
+    <key>EnvironmentVariables</key>
+    <dict>
+        <% @environment_variables.each do |key, value| -%>
+        <key><%= key -%></key>
+        <string><%= value -%></string>
+        <% end -%>
+    </dict>
+    <% end -%>
+    <% if @standard_in_path %>
+    <key>StandardInPath</key>
+    <string><%= @standard_in_path -%></string>
+    <% end -%>
+    <% if @standard_out_path %>
+    <key>StandardOutPath</key>
+    <string><%= @standard_out_path -%></string>
+    <% end -%>
+    <% if @standard_error_path %>
+    <key>StandardErrorPath</key>
+    <string><%= @standard_error_path -%></string>
+    <% end -%>
+    <% if @working_directory %>
+    <key>WorkingDirectory</key>
+    <string><%= @working_directory -%></string>
+    <% end -%>
+    <% if @soft_resource_limits -%>
+    <key>SoftResourceLimits</key>
+    <dict>
+        <% @soft_resource_limits.each do |key, value| -%>
+        <key><%= key -%></key>
+        <string><%= value -%></string>
+        <% end -%>
+    </dict>
+    <% end -%>
+    <% if @hard_resource_limits -%>
+    <key>HardResourceLimits</key>
+    <dict>
+        <% @hard_resource_limits.each do |key, value| -%>
+        <key><%= key -%></key>
+        <string><%= value -%></string>
+        <% end -%>
+    </dict>
+    <% end -%>
+    <% if @run_at_load == true -%>
+    <key>RunAtLoad</key>
+    <true/>
+    <% end -%>
+    <% if @run_at_load == false -%>
+    <key>RunAtLoad</key>
+    <false/>
+    <% end -%>
+    <% if @start_calendar_interval -%>
+    <key>StartCalendarInterval</key>
+    <% if @start_calendar_interval_type == 'dict' -%>
+        <dict>
+            <% @start_calendar_interval.each do |key, value| -%>
+            <key><%= key -%></key>
+            <string><%= value -%></string>
+            <% end -%>
+        </dict>
+    <% end -%>
+    <% if @start_calendar_interval_type == 'array' -%>
+    <array>
+        <% @start_calendar_interval.each do |start_calendar_interval_dict| -%>
+        <dict>
+            <% start_calendar_interval_dict.each do |key, value| -%>
+            <key><%= key -%></key>
+            <string><%= value -%></string>
+            <% end -%>
+        </dict>
+        <% end -%>
+    </array>
+    <% end -%>
+
+    <% end -%>
+    <% if @start_on_mount == true -%>
+    <key>StartOnMount</key>
+    <true/>
+    <% end -%>
+    <% if @start_on_mount == false -%>
+    <key>StartOnMount</key>
+    <false/>
+    <% end -%>
+    <% if @watch_paths -%>
+    <key>WatchPaths</key>
+    <array>
+        <% @watch_paths.each do |path| -%>
+        <string><%= path -%></string>
+        <% end -%>
+    </array>
+    <% end -%>
+    <% if @queue_directories -%>
+    <key>QueueDirectories</key>
+    <array>
+        <% @queue_directories.each do |directory| -%>
+        <string><%= directory -%></string>
+        <% end -%>
+    </array>
+    <% end -%>
+    <% if @keep_alive -%>
+    <key>KeepAlive</key>
+    <% if @keep_alive_type == 'dict' -%>
+    <dict>
+        <% @keep_alive.each do |key, value| -%>
+        <key><%= key -%></key>
+        <string><%= value -%></string>
+        <% end -%>
+    </dict>
+    <% end -%>
+    <% if @keep_alive_type == 'bool' -%>
+    <% if @keep_alive == true -%>
+    <true/>
+    <% end -%>
+    <% if @keep_alive == false -%>
+    <false/>
+    <% end -%>
+    <% end -%>
+    <% end -%>
+    <% if @user_name -%>
+    <key>UserName</key>
+    <string><%= @user_name -%></string>
+    <% end -%>
+    <% if @group_name -%>
+    <key>GroupName</key>
+    <string><%= @group_name -%></string>
+    <% end -%>
+    <% if @init_groups -%>
+    <key>InitGroups</key>
+    <% if @init_groups == true -%>
+    <true/>
+    <% end -%>
+    <% if @init_groups == false -%>
+    <false/>
+    <% end -%>
+    <% end -%>
+    <% if @umask -%>
+    <key>Umask</key>
+    <integer><%= @umask -%></integer>
+    <% end -%>
+    <% if @root_directory -%>
+    <key>RootDirectory</key>
+    <string><%= @root_directory -%></string>
+    <% end -%>
+    <% if @abandon_process_group -%>
+    <key>AbandonProcessGroup</key>
+    <% if @init_groups == true -%>
+    <true/>
+    <% end -%>
+    <% if @init_groups == false -%>
+    <false/>
+    <% end -%>
+    <% end -%>
+    <% if @exit_timeout -%>
+    <key>ExitTimeOut</key>
+    <integer><%= @exit_timeout -%></integer>
+    <% end -%>
+    <% if @timeout -%>
+    <key>TimeOut</key>
+    <integer><%= @timeout -%></integer>
+    <% end -%>
+    <% if @throttle_interval -%>
+    <key>ThrottleInterval</key>
+    <integer><%= @throttle_interval -%></integer>
+    <% end -%>
+    <% if @legacy_timers -%>
+    <% if @legacy_timers == true -%>
+    <true/>
+    <% end -%>
+    <% if @legacy_timers == false -%>
+    <false/>
+    <% end -%>
+    <% end -%>
+    <% if @nice -%>
+    <key>Nice</key>
+    <integer><%= @nice -%></integer>
+    <% end -%>
+</dict>
+</plist>
