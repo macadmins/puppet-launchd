@@ -222,6 +222,8 @@ define launchd::job (
             $start_calendar_interval_type = 'hash'
         } elsif is_array($start_calendar_interval) {
             $start_calendar_interval_type = 'array'
+        } else {
+            fail("We should have a type by now.")
         }
     }
 
