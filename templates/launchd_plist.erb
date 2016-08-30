@@ -80,7 +80,7 @@
         <dict>
             <% @start_calendar_interval.each do |key, value| -%>
             <key><%= key -%></key>
-            <string><%= value -%></string>
+            <integer><%= value -%></integer>
             <% end -%>
         </dict>
     <% end -%>
@@ -90,7 +90,7 @@
         <dict>
             <% start_calendar_interval_dict.each do |key, value| -%>
             <key><%= key -%></key>
-            <string><%= value -%></string>
+            <integer><%= value -%></integer>
             <% end -%>
         </dict>
         <% end -%>
