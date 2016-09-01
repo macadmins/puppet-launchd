@@ -60,6 +60,8 @@
 # [*start_calendar_interval*]
 #   Start launchd job at a certain date or time (see launchd.info). Type: Hash or Array of Hashes.
 #
+# [*start_interval*]
+#   Start launchd job every n seconds. Type: Integer
 # [*start_on_mount*]
 #   Start launchd job whenever a device is mounted. Type: Boolean. Defaults to undef.
 #
@@ -139,6 +141,7 @@ define launchd::job (
     $hard_resource_limits = undef,
     $run_at_load = true,
     $start_calendar_interval = undef,
+    $start_interval = undef,
     $start_on_mount = undef,
     $watch_paths = undef,
     $queue_directories = undef,
@@ -211,6 +214,9 @@ define launchd::job (
         validate_hash($hard_resource_limits)
     }
 
+    if $start_interval != undef {
+        validate_integer($start_interval)
+    }
     validate_bool($run_at_load)
 
     if $start_calendar_interval != undef {
