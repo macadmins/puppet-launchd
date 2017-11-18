@@ -225,7 +225,7 @@ define launchd::job (
         }
 
         if is_hash($start_calendar_interval) {
-            $start_calendar_interval_type = 'hash'
+            $start_calendar_interval_type = 'dict'
         } elsif is_array($start_calendar_interval) {
             $start_calendar_interval_type = 'array'
         } else {
@@ -247,10 +247,10 @@ define launchd::job (
 
     if $keep_alive != undef {
         if is_hash($keep_alive) == false and is_bool($keep_alive) == false {
-            fail("keep_alive must be an array or bool.")
+            fail("keep_alive must be a hash or bool.")
         }
         if is_hash($keep_alive) {
-            $keep_alive_type = 'hash'
+            $keep_alive_type = 'dict'
         } elsif is_bool($keep_alive) {
             $keep_alive_type = 'bool'
         }
